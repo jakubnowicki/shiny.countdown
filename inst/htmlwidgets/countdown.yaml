@@ -1,0 +1,5 @@
+dependencies:
+ - name: countdown
+   version: 2.6.0
+   src: htmlwidgets/countdown
+   script: countdown.min.js
