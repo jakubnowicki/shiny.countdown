@@ -1,7 +1,8 @@
 #' countdown
 #'
-#' Countdown widget
-#' @param start countdown start date
+#' A countdown widget
+#'
+#' @param start countdown start date, can be a string or a datetime object (POSIXct or POSIXlt)
 #' @param width widget width
 #' @param height widget height
 #' @param elementId widget id
@@ -9,6 +10,9 @@
 #' @import htmlwidgets
 #'
 #' @export
+#' @examples
+#' countdown(as.POSIXct("2015-10-12 13:00:00", tz = "UTC"))
+#'
 countdown <- function(start, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x

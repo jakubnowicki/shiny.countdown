@@ -7,7 +7,7 @@
 countdown(start, width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
-\item{start}{countdown start date}
+\item{start}{countdown start date, can be a string or a datetime object (POSIXct or POSIXlt)}
 
 \item{width}{widget width}
 
@@ -16,5 +16,9 @@ countdown(start, width = NULL, height = NULL, elementId = NULL)
 \item{elementId}{widget id}
 }
 \description{
-Countdown widget
+A countdown widget
+}
+\examples{
+countdown(as.POSIXct("2015-10-12 13:00:00", tz = "UTC"))
+
 }

@@ -16,7 +16,6 @@ HTMLWidgets.widget({
                 countdown(
                     new Date(x.start),
                     function(ts) {
-                        console.log(el.id)
                         document.getElementById(el.id).innerHTML = ts.toHTML();
                     }
                 );
