@@ -1,7 +1,8 @@
 #' countdown
 #'
-#' Countdown widget
-#' @param start countdown start date
+#' A countdown widget
+#'
+#' @param start countdown start date, can be a string or a datetime object (POSIXct or POSIXlt)
 #' @param width widget width
 #' @param height widget height
 #' @param elementId widget id
@@ -9,20 +10,23 @@
 #' @import htmlwidgets
 #'
 #' @export
+#' @examples
+#' countdown(as.POSIXct("2015-10-12 13:00:00", tz = "UTC"))
+#'
 countdown <- function(start, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
-  x = list(
+  x <- list(
     start = start
   )
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'countdown',
+    name = "countdown",
     x,
     width = width,
     height = height,
-    package = 'shiny.countdown',
+    package = "shiny.countdown",
     elementId = elementId
   )
 }
@@ -44,13 +48,15 @@ countdown <- function(start, width = NULL, height = NULL, elementId = NULL) {
 #' @name countdown-shiny
 #'
 #' @export
-countdownOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'countdown', width, height, package = 'shiny.countdown')
+countdownOutput <- function(outputId, width = "100%", height = "400px") {
+  htmlwidgets::shinyWidgetOutput(outputId, "countdown", width, height, package = "shiny.countdown")
 }
 
 #' @rdname countdown-shiny
 #' @export
 renderCountdown <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
   htmlwidgets::shinyRenderWidget(expr, countdownOutput, env, quoted = TRUE)
 }
