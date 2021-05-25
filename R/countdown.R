@@ -12,17 +12,17 @@
 countdown <- function(start, width = NULL, height = NULL, elementId = NULL) {
 
   # forward options using x
-  x = list(
+  x <- list(
     start = start
   )
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'countdown',
+    name = "countdown",
     x,
     width = width,
     height = height,
-    package = 'shiny.countdown',
+    package = "shiny.countdown",
     elementId = elementId
   )
 }
@@ -44,13 +44,15 @@ countdown <- function(start, width = NULL, height = NULL, elementId = NULL) {
 #' @name countdown-shiny
 #'
 #' @export
-countdownOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'countdown', width, height, package = 'shiny.countdown')
+countdownOutput <- function(outputId, width = "100%", height = "400px") {
+  htmlwidgets::shinyWidgetOutput(outputId, "countdown", width, height, package = "shiny.countdown")
 }
 
 #' @rdname countdown-shiny
 #' @export
 renderCountdown <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
+  if (!quoted) {
+    expr <- substitute(expr)
+  } # force quoted
   htmlwidgets::shinyRenderWidget(expr, countdownOutput, env, quoted = TRUE)
 }
